@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jumping Frog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Define the frog icon */
+        .frog {
+            font-size: 90px; /* 300% bigger than the default size */
+            cursor: pointer;
+            position: absolute;
+            transition: transform 1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="frog" id="frog"><i class="fas fa-frog"></i></div>
+
+    <script>
+        const frog = document.getElementById('frog');
+        
+        // Function to move the frog to a random position
+        function jumpFrog() {
+            const maxX = window.innerWidth - frog.clientWidth;
+            const maxY = window.innerHeight - frog.clientHeight;
+            
+            const newX = Math.random() * maxX;
+            const newY = Math.random() * maxY;
+            
+            frog.style.transform = `translate(${newX}px, ${newY}px)`;
+        }
+
+        // Attach the jumpFrog function to the mouseover event
+        frog.addEventListener('mouseover', jumpFrog);
+
+        // Function to change the frog's color randomly
+        function changeFrogColor() {
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            frog.style.color = randomColor;
+        }
+
+        // Attach the changeFrogColor function to the click event
+        frog.addEventListener('click', changeFrogColor);
+    </script>
+</body>
+</html>
